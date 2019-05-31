@@ -1,20 +1,17 @@
+import { ConnectedRouter } from "connected-react-router";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { ReactNode } from "react";
+import { Provider } from "react-redux";
+import App from "./components/App";
+import configureStore, { history } from "./redux/modules/configureStore";
 
-class App extends React.Component {
-  public render(): ReactNode {
-    let name = App.appName("App");
-    return (
-      <div className="App">
-        <h1>{name}</h1>
-      </div>
-    );
-  }
+const store = configureStore(history);
 
-  private static appName(name: string): string {
-    return name + "!";
-  }
-}
-
-ReactDOM.render(<App />, document.querySelector("#root"));
+ReactDOM.render(
+  <Provider store={store}>
+    <ConnectedRouter history={history}>
+      <App />
+    </ConnectedRouter>
+  </Provider>,
+  document.getElementById("root")
+);

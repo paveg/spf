@@ -25,6 +25,13 @@
     "@typescript-eslint/no-use-before-define": "warn",
     "no-useless-constructor": "off",
     "@typescript-eslint/no-useless-constructor": "warn",
-    "prettier/prettier": "error"
+    "prettier/prettier": [
+      "error",
+      {
+        "printWidth": 120,
+        "singleQuote": false,
+        "semi": true
+      }
+    ]
   }
 }

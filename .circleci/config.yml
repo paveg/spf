@@ -1,0 +1,61 @@
+version: 2.1
+defaults: &defaults
+  working_directory: ~/repo
+  environment:
+    - CIRCLE_ARTIFACTS: "/tmp/test-results"
+executors:
+  default:
+    docker:
+      - image: circleci/node:10.15.3
+commands:
+  restore-and-save-cache:
+    steps:
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
+      - run: npm install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
+jobs:
+  prepare:
+    <<: *defaults
+    parallelism: 1
+    executor: default
+    steps:
+      - checkout
+      - restore-and-save-cache
+  test:
+    <<: *defaults
+    executor: default
+    steps:
+      - run:
+          name: npm run test
+          command: |
+            npm run test-ci
+          after_success:
+            command: npm run codecov -- -t ${CODECOV_TOKEN}
+  lint:
+    <<: *defaults
+    executor: default
+    steps:
+      - run:
+          name: run eslint
+          command: |
+            mkdir -p ${CIRCLE_ARTIFACTS}/eslint
+            node_modules/.bin/eslint . --format junit --output-file ${CIRCLE_ARTIFACTS}/eslint/results.xml
+      - store_test_results:
+          path: ${CIRCLE_ARTIFACTS}
+workflows:
+  integrations:
+    jobs:
+      - prepare
+      - lint:
+          requires:
+            - prepare

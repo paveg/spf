@@ -7,6 +7,7 @@
     "build": "webpack",
     "watch": "webpack -w",
     "lint": "eslint src/**/* --ext .ts,.tsx",
+    "lint:ci": "eslint src/**/* --ext. .ts,.tsx --format junit --output-file ${CIRCLE_ARTIFACTS}/eslint/results.xml",
     "lint:fix": "eslint src/**/* --ext .ts,.tsx --fix"
   },
   "author": "paveg",

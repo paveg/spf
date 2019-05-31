@@ -49,7 +49,7 @@ jobs:
           name: run eslint
           command: |
             mkdir -p ${CIRCLE_ARTIFACTS}/eslint
-            node_modules/.bin/eslint . --format junit --output-file ${CIRCLE_ARTIFACTS}/eslint/results.xml
+            npm run lint:ci
       - store_test_results:
           path: ${CIRCLE_ARTIFACTS}
 workflows:

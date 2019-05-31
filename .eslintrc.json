@@ -1,0 +1,30 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "tsconfig.json",
+    "tsconfigRootDir": "."
+  },
+  "plugins": ["@typescript-eslint", "prettier", "react"],
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended",
+    "prettier/@typescript-eslint"
+  ],
+  "rules": {
+    /**
+     * @description rules of eslint-plugin-prettier
+     */
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "warn",
+    "camelcase": "off",
+    "@typescript-eslint/camelcase": "error",
+    "no-array-constructor": "off",
+    "@typescript-eslint/no-array-constructor": "warn",
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-use-before-define": "warn",
+    "no-useless-constructor": "off",
+    "@typescript-eslint/no-useless-constructor": "warn",
+    "prettier/prettier": "error"
+  }
+}

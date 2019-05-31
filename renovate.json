@@ -1,0 +1,32 @@
+{
+  "extends": ["config:base"],
+  "labels": ["renovate"],
+  "assignees": ["paveg"],
+  "prConcurrentLimit": 20,
+  "docker": {
+    "enabled": false
+  },
+  "schedule": ["every weekday"],
+  "separateMultipleMajor": true,
+  "separateMajorMinor": true,
+  "separateMinorPatch": true,
+  "major": {
+    "automerge": false,
+    "labels": ["Practical", "major", "renovate"]
+  },
+  "minor": {
+    "automerge": false,
+    "labels": ["Practical", "minor", "renovate"]
+  },
+  "patch": {
+    "automerge": true,
+    "groupName": "all patch dependencies",
+    "labels": ["Practical", "patch", "renovate"]
+  },
+  "pin": {
+    "labels": ["Practical", "pin", "renovate"]
+  },
+  "lockFileMaintenance": {
+    "automerge": true
+  }
+}

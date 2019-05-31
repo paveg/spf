@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": "./src/",
     "sourceMap": true,
     "target": "es2018",
     "module": "commonjs",
@@ -10,7 +11,10 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "moduleResolution": "node",
-    "lib": ["es2019", "dom"]
+    "lib": ["es2019", "dom"],
+    "paths": {
+      "#/*": ["*"]
+    }
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "**/*.spec.ts"]

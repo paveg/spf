@@ -42,8 +42,11 @@ jobs:
           name: npm run test
           command: |
             npm run test-ci
-          after_success:
-            command: npm run codecov -- -t ${CODECOV_TOKEN}
+      - run:
+          name: upload codecov
+          when: on_success
+          command: |
+            npm run codecov -- -t ${CODECOV_TOKEN}
   lint:
     <<: *defaults
     executor: default

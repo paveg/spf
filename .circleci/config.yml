@@ -35,6 +35,9 @@ jobs:
     <<: *defaults
     executor: default
     steps:
+      - attach_workspace:
+          at: .
+      - restore-and-save-cache
       - run:
           name: npm run test
           command: |
@@ -45,6 +48,9 @@ jobs:
     <<: *defaults
     executor: default
     steps:
+      - attach_workspace:
+          at: .
+      - restore-and-save-cache
       - run:
           name: run eslint
           command: |

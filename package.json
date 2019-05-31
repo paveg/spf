@@ -6,6 +6,9 @@
   "scripts": {
     "build": "webpack",
     "watch": "webpack -w",
+    "test": "jest --watchAll --coverage",
+    "test-ci": "jest --forceExit --coverage --coverageReporters=\"text-lcov\" > coverage.lcov",
+    "codecov": "codecov",
     "lint": "eslint src/**/* --ext .ts,.tsx",
     "lint:ci": "eslint src/**/* --ext. .ts,.tsx --format junit --output-file ${CIRCLE_ARTIFACTS}/eslint/results.xml",
     "lint:fix": "eslint src/**/* --ext .ts,.tsx --fix"
@@ -25,6 +28,7 @@
     "@typescript-eslint/eslint-plugin-tslint": "1.9.0",
     "@typescript-eslint/parser": "1.9.0",
     "babel-jest": "^24.8.0",
+    "codecov": "^3.5.0",
     "enzyme-adapter-react-16": "^1.13.2",
     "eslint": "5.16.0",
     "eslint-config-prettier": "4.3.0",

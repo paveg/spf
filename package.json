@@ -6,6 +6,7 @@
   "scripts": {
     "build": "webpack",
     "watch": "webpack -w",
+    "start": "webpack-dev-server --hot --inline --watch-content-base --content-base public/ --open-page index.html",
     "test": "jest --watchAll --coverage",
     "test-ci": "jest --forceExit --coverage --coverageReporters=\"text-lcov\" > coverage.lcov",
     "codecov": "codecov",
@@ -23,6 +24,7 @@
     "@babel/preset-typescript": "7.3.3",
     "@types/enzyme": "3.9.3",
     "@types/enzyme-adapter-react-16": "1.0.5",
+    "@types/history": "^4.7.2",
     "@types/jest": "24.0.13",
     "@typescript-eslint/eslint-plugin": "1.9.0",
     "@typescript-eslint/eslint-plugin-tslint": "1.9.0",
@@ -41,7 +43,8 @@
     "tslint": "5.17.0",
     "typescript": "3.5.1",
     "webpack": "4.32.2",
-    "webpack-cli": "3.3.2"
+    "webpack-cli": "3.3.2",
+    "webpack-dev-server": "^3.5.1"
   },
   "dependencies": {
     "@types/react": "^16.8.19",
